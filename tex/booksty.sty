@@ -1,0 +1,360 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% File: booksty.sty, version 1.0, May 2018
+%%% =============================================
+%%% Copyright (c) 2018 by William Wallis.  All rights reserved.
+%%% This file is free and can be modified or distributed as long as
+%%% you meet the following conditions:
+%%%
+%%% (1) This copyright notice is kept intact on all modified copies.
+%%% (2) If you modify this file, you MUST NOT use the original file name.
+%%%
+%%% This file defines macros used for preparing educational text books
+%%% written by myself.
+%%%
+%%%
+%%% Usage:
+%%% ======
+%%%
+%%% To use this file, include this file as a package in the preamble:
+%%%
+%%% \documentclass[...]{...}
+%%%  \usepackage{booksty}
+%%%
+%%%
+%%% Command Names:
+%%% ==============
+%%%
+%%%  COMMAND                    %%%  DESCRIPTION                                    %%%  DEFAULT
+%%% \W                          %%% Whole Numbers (starting at 0)
+%%% \N                          %%% Naturals      (starting at 1)
+%%% \Z                          %%% Integers
+%%% \Q                          %%% Rationals
+%%% \R                          %%% Reals
+%%% \C                          %%% Complex
+%%% \F                          %%% Finite Fields
+%%% \P                          %%% Projective Plane
+%%%
+%%% \abs                        %%% Absolute value
+%%% \emptyset                   %%% Empty set
+%%%
+%%% \ulsc                       %%% Underlined and small caps text
+%%% \textand                    %%% Text{and} with <arg> hspace either side         %%%  20pt
+%%% \textor                     %%% Text{or} with <arg> hspace either side          %%%  20pt
+%%%
+%%% \defeq                      %%% Defined to be equal to, :=
+%%% \eq                         %%% Equals sign with stuff on top
+%%% \changemargin               %%% Environment; changes margins with two arguments
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\typeout{********************************************************}
+\typeout{***********  William Wallis Book Style File  ***********}
+\typeout{********************************************************}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   TikZ and Graphics
+%
+
+\RequirePackage{graphicx,hyperref,tikz}
+  \usetikzlibrary{%positioning,
+                %shapes,
+                arrows.meta,
+                %intersections,
+                %through,
+                %shadows,
+                %backgrounds,
+                %calc,
+                %matrix,
+                %plotmarks
+                %decorations.markings,
+                %hobby
+                }
+
+
+%%%%%%%%%%% Setting up the font   %%%%%%%%%%%
+
+%\renewcommand{\familydefault}{\sfdefault}
+
+
+%%%%%%%%%% Setting up the page style   %%%%%%%%%%
+
+\setlength{\parskip}{12pt}
+\setlength{\parindent}{0 pt}
+\renewcommand{\baselinestretch}{1.3}
+
+\RequirePackage{layout}             %  use \layout to generate layout page
+
+\setlength{\textwidth}{159 mm}
+\setlength{\textheight}{226 mm}
+\setlength{\oddsidemargin}{0 mm}
+\setlength{\topmargin}{0 mm}
+\setlength{\headsep}{15 mm}
+\setlength{\footskip}{15 mm}
+
+%\setlength{\oddsidemargin}{0pt}     %  0mm                  %  3
+%\setlength{\textwidth}{491pt}       %  159mm = 450.709pt    %  8
+%\setlength{\marginparsep}{11pt}                             %  9
+%\setlength{\marginparwidth}{25pt}                           %  10
+
+%\setlength{\topmargin}{0pt}         %  0mm                  %  4
+%\setlength{\headheight}{20pt}                               %  5
+%\setlength{\headsep}{20pt}          %  15mm = 42.5197pt     %  6
+%\setlength{\textheight}{720pt}      %  226mm = 640.63pt     %  7
+%\setlength{\footskip}{10pt}         %  15mm = 42.5197pt     %  11
+%\setlength{\marginparpush}{0pt}                             %  12
+
+%\setlength{\hoffset}{-20pt}                                 %  1
+%\setlength{\voffset}{-20pt}                                 %  2
+
+%\setlength{\paperwidth}{595pt}
+%\setlength{\paperheight}{842pt}
+
+%%%%%%%%%%%%%%%%%% Blank pages %%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{afterpage}
+
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
+
+%%%%%%%%%%  Commands  %%%%%%%%%%
+
+\RequirePackage{amsmath,amssymb,amsthm}
+\RequirePackage{mathtools,enumitem}
+
+\newcommand{\W}{\mathbb{W}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\q}{\quad}
+\newcommand{\abs}[1]{\delimitershortfall-1sp \lvert\hspace{0.75pt}#1\hspace{0.75pt}\rvert}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\ulsc}[1]{\underline{\textsc{#1}}}
+\newcommand{\textand}{\hspace{20pt}\text{and}\hspace{20pt}}
+\newcommand{\textor}{\hspace{20pt}\text{or}\hspace{20pt}}
+
+%%%%%%%%%%  Online Commands  %%%%%%%%%%
+
+%%% 'defined to be' equals sign --- https://tex.stackexchange.com/a/4881
+\newcommand*{\defeq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt\hbox{\scriptsize.}
+    \hbox{\scriptsize.}}}%
+    =}
+
+%%% equals with stuff on top --- https://tex.stackexchange.com/a/74132/126840
+\newcommand{\eq}[1][]{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily #1}}}{=}}}
+
+%%% changing left and right margin --- https://tex.stackexchange.com/a/600 (used in \assignmenttitlepage)
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%  Section, Subsection, Subsubsection Redefinition  %%%%%%%%%%
+
+\RequirePackage{titlesec}
+
+% \titleformat{command}[shape]
+%   {format}{label}{sep}{before-code}[after-code]
+
+\titleformat{\section}
+  {\Huge\centering\scshape}{\thesection.}{10pt}{}
+
+\titleformat{\subsection}
+  {\Large\scshape}{\thesubsection.}{10pt}{}[\vspace{5pt}]
+
+ \titleformat{\subsubsection}
+  {\large\scshape}{\thesubsubsection.}{10pt}{}[\vspace{5pt}]
+
+%%%%%%%%%%%%%%%%% Environments %%%%%%%%%%%%%%%%%%%
+
+\newcounter{counter}[section]%
+\renewcommand\thecounter{\thesection.\arabic{counter}}%
+
+\setcounter{tocdepth}{2}
+
+\newenvironment{definition}[1][\hspace{-3pt}]{%
+	\refstepcounter{counter}%
+	\ulsc{Definition~\thecounter} #1
+    }%
+	{}%
+
+\newenvironment{theorem}[1][\hspace{-3pt}]{%
+	\refstepcounter{counter}%
+	\ulsc{Theorem~\thecounter} #1
+	\itshape
+	}%
+	{}%
+
+\newenvironment{lemma}[1][\hspace{-3pt}]{%
+	\refstepcounter{counter}%
+	\ulsc{Lemma~\thecounter} #1
+	\itshape
+	}%
+	{}%
+
+\newenvironment{corollary}[1][\hspace{-3pt}]{%
+	\refstepcounter{counter}%
+	\ulsc{Corollary~\thecounter} #1
+	\itshape
+	}%
+	{}%
+
+\newenvironment{proposition}[1][\hspace{-3pt}]%
+	{\refstepcounter{counter}
+	\ulsc{Proposition~\thecounter} #1
+	\itshape
+	}%
+	{}%
+
+\newenvironment{example}[1][\hspace{-3pt}]{%
+    \refstepcounter{counter}%
+	\ulsc{Example~\thecounter} #1
+    }%
+	{}%
+
+\newenvironment{remark}[1][\hspace{-3pt}]{%
+    \refstepcounter{counter}%
+	\ulsc{Remark~\thecounter} #1}%
+	{}%
+
+\newcounter{excounter}[section]%
+\renewcommand\theexcounter{\thesection.\arabic{excounter}}%
+
+\newenvironment{exercise}[1][]{%
+    \refstepcounter{excounter}%
+	\ulsc{Exercise~\theexcounter} #1
+    }%
+	{}%
+
+\newenvironment{solution}[2]{%
+	\ulsc{Solution~#1} #2
+    }%
+	{}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% Extras
+
+%https://tex.stackexchange.com/questions/78221/changing-footnote-symbols
+%https://tex.stackexchange.com/questions/20575/attractive-boxed-equations
+%https://tex.stackexchange.com/questions/180325/boxed-equation-with-number
+%https://tex.stackexchange.com/questions/44616/vertical-space-before-and-after-custom-environment
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  To change the counters, use the following:
+
+%\usepackage{chngcntr}
+%\counterwithout{figure}{chapter}
+%\renewcommand\thefigure{\arabic{chapter}.\arabic{section}.\arabic{figure}}
+%\counterwithout{footnote}{chapter}
+
+
+%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Upright Math fonts
+%
+
+\DeclareSymbolFont {greekletters}{OML}{cmm}{m}{it}
+\DeclareSymbolFont {latinletters}{OML}{cmm}{m}{it}
+\DeclareMathVersion {upright}
+\SetSymbolFont {latinletters}{upright}{OT1}{cmr}{m}{n}
+\SetSymbolFont {greekletters}{upright}{U}{txmia}{m}{it} % using the upright Greek letters provided with the txfonts package
+
+\DeclareMathSymbol{a}{\mathalpha}{latinletters}{`a}
+\DeclareMathSymbol{b}{\mathalpha}{latinletters}{`b}
+\DeclareMathSymbol{c}{\mathalpha}{latinletters}{`c}
+\DeclareMathSymbol{d}{\mathalpha}{latinletters}{`d}
+\DeclareMathSymbol{e}{\mathalpha}{latinletters}{`e}
+\DeclareMathSymbol{f}{\mathalpha}{latinletters}{`f}
+\DeclareMathSymbol{g}{\mathalpha}{latinletters}{`g}
+\DeclareMathSymbol{h}{\mathalpha}{latinletters}{`h}
+\DeclareMathSymbol{i}{\mathalpha}{latinletters}{`i}
+\DeclareMathSymbol{j}{\mathalpha}{latinletters}{`j}
+\DeclareMathSymbol{k}{\mathalpha}{latinletters}{`k}
+\DeclareMathSymbol{l}{\mathalpha}{latinletters}{`l}
+\DeclareMathSymbol{m}{\mathalpha}{latinletters}{`m}
+\DeclareMathSymbol{n}{\mathalpha}{latinletters}{`n}
+\DeclareMathSymbol{o}{\mathalpha}{latinletters}{`o}
+\DeclareMathSymbol{p}{\mathalpha}{latinletters}{`p}
+\DeclareMathSymbol{q}{\mathalpha}{latinletters}{`q}
+\DeclareMathSymbol{r}{\mathalpha}{latinletters}{`r}
+\DeclareMathSymbol{s}{\mathalpha}{latinletters}{`s}
+\DeclareMathSymbol{t}{\mathalpha}{latinletters}{`t}
+\DeclareMathSymbol{u}{\mathalpha}{latinletters}{`u}
+\DeclareMathSymbol{v}{\mathalpha}{latinletters}{`v}
+\DeclareMathSymbol{w}{\mathalpha}{latinletters}{`w}
+\DeclareMathSymbol{x}{\mathalpha}{latinletters}{`x}
+\DeclareMathSymbol{y}{\mathalpha}{latinletters}{`y}
+\DeclareMathSymbol{z}{\mathalpha}{latinletters}{`z}
+\DeclareMathSymbol{A}{\mathalpha}{latinletters}{`A}
+\DeclareMathSymbol{B}{\mathalpha}{latinletters}{`B}
+\DeclareMathSymbol{C}{\mathalpha}{latinletters}{`C}
+\DeclareMathSymbol{D}{\mathalpha}{latinletters}{`D}
+\DeclareMathSymbol{E}{\mathalpha}{latinletters}{`E}
+\DeclareMathSymbol{F}{\mathalpha}{latinletters}{`F}
+\DeclareMathSymbol{G}{\mathalpha}{latinletters}{`G}
+\DeclareMathSymbol{H}{\mathalpha}{latinletters}{`H}
+\DeclareMathSymbol{I}{\mathalpha}{latinletters}{`I}
+\DeclareMathSymbol{J}{\mathalpha}{latinletters}{`J}
+\DeclareMathSymbol{K}{\mathalpha}{latinletters}{`K}
+\DeclareMathSymbol{L}{\mathalpha}{latinletters}{`L}
+\DeclareMathSymbol{M}{\mathalpha}{latinletters}{`M}
+\DeclareMathSymbol{N}{\mathalpha}{latinletters}{`N}
+\DeclareMathSymbol{O}{\mathalpha}{latinletters}{`O}
+\DeclareMathSymbol{P}{\mathalpha}{latinletters}{`P}
+\DeclareMathSymbol{Q}{\mathalpha}{latinletters}{`Q}
+\DeclareMathSymbol{R}{\mathalpha}{latinletters}{`R}
+\DeclareMathSymbol{S}{\mathalpha}{latinletters}{`S}
+\DeclareMathSymbol{T}{\mathalpha}{latinletters}{`T}
+\DeclareMathSymbol{U}{\mathalpha}{latinletters}{`U}
+\DeclareMathSymbol{V}{\mathalpha}{latinletters}{`V}
+\DeclareMathSymbol{W}{\mathalpha}{latinletters}{`W}
+\DeclareMathSymbol{X}{\mathalpha}{latinletters}{`X}
+\DeclareMathSymbol{Y}{\mathalpha}{latinletters}{`Y}
+\DeclareMathSymbol{Z}{\mathalpha}{latinletters}{`Z}
+
+%\DeclareMathSymbol{\alpha}{\mathord}{greekletters}{"0B}
+%\DeclareMathSymbol{\beta}{\mathord}{greekletters}{"0C}
+%\DeclareMathSymbol{\gamma}{\mathord}{greekletters}{"0D}
+%\DeclareMathSymbol{\delta}{\mathord}{greekletters}{"0E}
+%\DeclareMathSymbol{\epsilon}{\mathord}{greekletters}{"0F}
+%\DeclareMathSymbol{\zeta}{\mathord}{greekletters}{"10}
+%\DeclareMathSymbol{\eta}{\mathord}{greekletters}{"11}
+%\DeclareMathSymbol{\theta}{\mathord}{greekletters}{"12}
+%\DeclareMathSymbol{\iota}{\mathord}{greekletters}{"13}
+%\DeclareMathSymbol{\kappa}{\mathord}{greekletters}{"14}
+%\DeclareMathSymbol{\lambda}{\mathord}{greekletters}{"15}
+%\DeclareMathSymbol{\mu}{\mathord}{greekletters}{"16}
+%\DeclareMathSymbol{\nu}{\mathord}{greekletters}{"17}
+%\DeclareMathSymbol{\xi}{\mathord}{greekletters}{"18}
+%\DeclareMathSymbol{\pi}{\mathord}{greekletters}{"19}
+%\DeclareMathSymbol{\rho}{\mathord}{greekletters}{"1A}
+%\DeclareMathSymbol{\sigma}{\mathord}{greekletters}{"1B}
+%\DeclareMathSymbol{\tau}{\mathord}{greekletters}{"1C}
+%\DeclareMathSymbol{\upsilon}{\mathord}{greekletters}{"1D}
+%\DeclareMathSymbol{\phi}{\mathord}{greekletters}{"1E}
+%\DeclareMathSymbol{\chi}{\mathord}{greekletters}{"1F}
+%\DeclareMathSymbol{\psi}{\mathord}{greekletters}{"20}
+%\DeclareMathSymbol{\omega}{\mathord}{greekletters}{"21}
+%\DeclareMathSymbol{\varepsilon}{\mathord}{greekletters}{"22}
+%\DeclareMathSymbol{\vartheta}{\mathord}{greekletters}{"23}
+%\DeclareMathSymbol{\varpi}{\mathord}{greekletters}{"24}
+%\DeclareMathSymbol{\varrho}{\mathord}{greekletters}{"25}
+%\DeclareMathSymbol{\varsigma}{\mathord}{greekletters}{"26}
+%\DeclareMathSymbol{\varphi}{\mathord}{greekletters}{"27}

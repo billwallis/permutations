@@ -1,0 +1,65 @@
+\section{The Symmetric Group}\label{sec:theorems}%
+
+Now that the main notation and conventions have been established, some of the main theorems and permutation structures can be introduced. The following chapters are more technical than the first.
+
+\subsection{Groups}\label{subsec:groups}
+
+Informally, as mentioned in the preliminaries, a group is a set of elements with some way of combining elements to give another element in the set. We now introduce the formal definition of a group.
+
+\begin{definition}[(Group)]
+    A group \(G\) is a set together with a binary operation, usually called \textit{multiplication}, such that the following hold:
+    \vspace*{-10pt}\begin{enumerate}[nolistsep]
+        \item[--] for all \(g_{1}, g_{2}, g_{3} \in G\) we have \((g_{1}g_{2})g_{3} = g_{1}(g_{2}g_{3})\);\hfill(associativity)
+        \item[--] there is an element \(1_{G} \in G\) such that \(g1_{G} = 1_{G}g = g\) for all \(g \in G\);\hfill(identity element)
+        \item[--] for all \(g \in G\) there exists \(g^{-1} \in G\) such that \(gg^{-1} = g^{-1}g = 1_{G}\).\hfill(inverses)
+    \end{enumerate}\vspace*{-10pt}
+    We write \(1\) instead of \(1_{G}\) if it is clear to do so. The trivial group \(\{1\}\) with order \(1\) is also denoted \(1\).
+\end{definition}
+
+\subsection{Notable Lemmas}
+
+We will use the terminology \textit{product} of permutations to mean either a product or a composition of permutations, as it will be made clear which reading convention will be used. The following fact has been used implicitly without mention, but will be formally proved now.
+
+\begin{lemma}
+    A product of permutations is a permutation.
+\end{lemma}
+
+\begin{definition}[(Transposition)]
+    A permutation cycle with exactly two elements, say \((a\quad b)\), is called a \textit{transposition}.
+\end{definition}
+
+\begin{lemma}
+    Every permutation can be decomposed into a product of transpositions.
+\end{lemma}
+
+\begin{definition}[(Permutation Parity)]
+    A permutation is an \textit{even} permutation if it can be decomposed into an even number of transposition. A permutation is an \textit{odd} permutation if it can be decomposed into an odd number of transpositions.
+\end{definition}
+
+The \textit{parity} of a permutation is whether the permutation is even or odd. The proof of the following lemma shows that it must be one or the other, and cannot be both.
+
+\begin{lemma}
+    Every permutation is either even or odd, and is never both.
+\end{lemma}
+
+An alternate description of parity is to define the \textit{sign} of a permutation.
+
+\begin{definition}[(Permutation Sign)]
+    Suppose that \(\sigma\) is a permutation that can be decomposed into \(k\) transpositions. Then the \textit{sign} of \(\sigma\), written \(\sgn(\sigma)\), is equal to \((-1)^{k}\).
+\end{definition}
+
+We see that \(\sgn(\sigma) = 1\) is \(\sigma\) is even, and \(\sgn(\sigma) = -1\) if \(\sigma\) is odd.
+
+\begin{lemma}
+    The sign of a permutation is either \(-1\) or \(1\), and is never both.
+\end{lemma}
+
+\begin{lemma}
+    The sign of a permutation is \(-1\) if and only if the permutation is odd. The sign of a permutation is \(1\) if and only if the permutation is even.
+\end{lemma}
+
+In Exercise~\ref{ex:ch1-powers} we encountered the \textit{identity permutation}, which maps every element to itself.
+
+\begin{lemma}
+    The identity permutation is an even permutation. Every transposition is odd.
+\end{lemma}

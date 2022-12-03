@@ -1,0 +1,50 @@
+%https://texblog.org/2013/02/13/latex-documentclass-options-illustrated/
+%\documentclass[a4paper,11pt,oneside,openany]{book}
+\documentclass[a4paper,10pt]{article}% 12pt recommended for ebooks
+  \usepackage[utf8]{inputenc}
+  \usepackage{booksty}
+%\usepackage{geometry}[a5paper]
+
+\typeout{
+*
+Lemma — a minor result whose sole purpose is to help in proving a theorem.  It is a stepping stone on the path to proving a theorem. Very occasionally lemmas can take on a life of their own (Zorn’s lemma, Urysohn’s lemma, Burnside’s lemma, Sperner’s lemma).
+*
+Proposition — a proved and often interesting result, but generally less important than a theorem.
+*
+Claim — an assertion that is then proved.  It is often used like an informal lemma.
+*
+Even pages, left --- odd pages, right.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}%\layout\blankpage
+\input{sidematter/frontmatter.tex}
+
+%%%
+
+\pagestyle{headings}%\pagestyle{plain}
+\setcounter{page}{1}
+
+%%%
+
+\input{sidematter/preface.tex}\newpage
+
+\input{chapter01.tex}\newpage%  Introduction and Notation
+\input{chapter02.tex}\newpage%  The Symmetric Group
+
+%\input{chapter03.tex}%
+
+\input{sidematter/solutions.tex}\newpage%
+
+%%%
+
+\newpage%
+\bibliographystyle{alpha}\bibliography{biblio}%
+\addcontentsline{toc}{section}{References}\clearpage%
+
+%\blankpage
+
+%\blankpage
+
+\end{document}
