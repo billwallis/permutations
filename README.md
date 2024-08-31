@@ -1,4 +1,3 @@
-permutations
----
-A mathematics textbook on algebraic permutations.
+# Permutations
 
+A mathematics textbook on algebraic permutations.
