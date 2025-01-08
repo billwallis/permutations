@@ -1,19 +1,19 @@
+[project]
+name = "permutations"
+version = "0.0.0"
+description = "A Mathematics textbook on algebraic permutations."
+authors = [{name = "Bilbottom"}]
+readme = "README.md"
+requires-python = ">=3.11"
+dynamic = ["dependencies"]
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry]
-name = "permutations"
-version = "0.0.0"
-description = "A mathematics textbook on algebraic permutations."
-authors = ["Bilbottom"]
-readme = "README.md"
-packages = []
 package-mode = false
-
-[tool.poetry.dependencies]
-python = "^3.11"
 
 [tool.poetry.group]
 dev.optional = false
