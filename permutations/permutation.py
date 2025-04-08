@@ -18,6 +18,10 @@ class Permutation:
         while True:
             if (v := self.mapping[v]) == k:
                 break
+            if v is None:
+                # this should be guaranteed in the constructor
+                raise ValueError("not a valid permutation")
+
             l.append(v)
 
         return l
