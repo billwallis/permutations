@@ -8,13 +8,13 @@ class Permutation:
     A _permutation_ is a bijective map from a set to itself.
     """
 
-    def __init__(self, mapping: dict[int, int]):
+    def __init__(self, mapping: dict[int, int]) -> None:
         self.mapping = mapping
 
     @property
     def as_list(self) -> list:
         k = next(iter(self.mapping))
-        l, v = [k], k
+        lst, v = [k], k
         while True:
             if (v := self.mapping[v]) == k:
                 break
@@ -22,6 +22,6 @@ class Permutation:
                 # this should be guaranteed in the constructor
                 raise ValueError("not a valid permutation")
 
-            l.append(v)
+            lst.append(v)
 
-        return l
+        return lst
